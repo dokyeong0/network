@@ -1,39 +1,41 @@
-days = {
-    'January': 31, 'February': 28, 'March': 31, 'April': 30,
-    'May': 31, 'June': 30, 'July': 31, 'August': 31,
-    'September': 30, 'October': 31, 'November': 30,
-    'December': 31
-}
+users = [
+    {'name': 'Todd', 'phone': '555-1414', 'email': 'todd@mail.net'},
+    {'name': 'Helga', 'phone': '555-1618', 'email': 'helga@mail.net'},
+    {'name': 'Princess', 'phone': '555-3141', 'email': ''},
+    {'name': 'LJ', 'phone': '555-2718', 'email': 'lj@mail.net'}
+]
 
-def print_days(month):
-    if month in days:
-        print(f"{month}은 {days[month]}일까지 있습니다.")
-    else:
-        print("잘못된 입력입니다.")
+print("전화번호가 8로 끝나는 사용자 이름:")
+for user in users:
+    if user['phone'].endswith('8'):
+        print(user['name'])
 
-print("알파벳 순서로 모든 월:")
-for month in sorted(days):
-    print(month)
+print("\n이메일이 없는 사용자 이름:")
+for user in users:
+    if not user['email']:
+        print(user['name'])
 
-print("\n일수가 31인 월:")
-for month, days_in_month in days.items():
-    if days_in_month == 31:
-        print(month)
+def print_contact_info(name):
+    for user in users:
+        if user['name'] == name:
+            print(f"전화번호: {user['phone']}")
+            print(f"이메일: {user['email']}")
+            return
+    print("이름이 없습니다.")
+
+input_name = input("\n사용자 이름을 입력하세요: ")
+print_contact_info(input_name)
 
 
-print("\n월의 일수를 기준으로 오름차순으로 (key-value) 쌍:")
-sorted_days = sorted(days.items(), key=lambda x: x[1])
-for month, days_in_month in sorted_days:
-    print(f"{month}: {days_in_month}일")
+def parse_string(string, separator1='&', separator2='='):
+    pairs = string.split(separator1)
+    result_dict = {}
+    for pair in pairs:
+        key, value = pair.split(separator2)
+        result_dict[key] = value
+    return result_dict
 
-
-def print_days_short(month_short):
-    for month, days_in_month in days.items():
-        if month.startswith(month_short):
-            print(f"{month}: {days_in_month}일")
-
-user_input = input("월을 입력하세요: ")
-if len(user_input) == 3:
-    print_days_short(user_input.capitalize())
-else:
-    print_days(user_input.capitalize())
+sample_string = 'led=on&motor=off&switch=off'
+parsed_dict = parse_string(sample_string)
+print("\n분리된 딕셔너리:")
+print(parsed_dict)
