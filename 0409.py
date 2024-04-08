@@ -1,30 +1,29 @@
-users = [
-    {'name': 'Todd', 'phone': '555-1414', 'email': 'todd@mail.net'},
-    {'name': 'Helga', 'phone': '555-1618', 'email': 'helga@mail.net'},
-    {'name': 'Princess', 'phone': '555-3141', 'email': ''},
-    {'name': 'LJ', 'phone': '555-2718', 'email': 'lj@mail.net'}
-]
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def getName(self):
+        return self.name
+    
+    def getAge(self):
+        return self.age
 
-print("전화번호가 8로 끝나는 사용자 이름:")
-for user in users:
-    if user['phone'].endswith('8'):
-        print(user['name'])
+class Employee(Person):
+    def __init__(self, name, age, employeeID):
+        super().__init__(name, age)
+        self.employeeID = employeeID
+    
+    def getID(self):
+        return self.employeeID
 
-print("\n이메일이 없는 사용자 이름:")
-for user in users:
-    if not user['email']:
-        print(user['name'])
 
-def print_contact_info(name):
-    for user in users:
-        if user['name'] == name:
-            print(f"전화번호: {user['phone']}")
-            print(f"이메일: {user['email']}")
-            return
-    print("이름이 없습니다.")
+employee = Employee("IoT", 65, 2018)
 
-input_name = input("\n사용자 이름을 입력하세요: ")
-print_contact_info(input_name)
+print("이름:", employee.getName())
+print("나이:", employee.getAge())
+print("ID:", employee.getID())
+
 
 
 def parse_string(string, separator1='&', separator2='='):
