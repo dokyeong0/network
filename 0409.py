@@ -1,5 +1,11 @@
-sum = 0
-for s in '23456789':
-    sum += int(s)
+numbers = []
+for i in range(50):
+    numbers.append(i)
 
-print(sum)
+print(numbers)
+
+squares = []
+for i in range(50):
+    squares.append(i**2)
+
+print(squares)
