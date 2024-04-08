@@ -1,13 +1,18 @@
-from random import randint
-
-money = 50
-while money > 0 and money < 100:
-    coin = randint(1,2)
-    choice = randint(1,2)
-    if choice == coin:
-        money += 9
+def gcd(a,b):
+    larger = 0
+    smaller = 100000
+    if (a>b):
+        larger = a
+        smaller = b
     else:
-        money -= 10
-    print("money:",money)
+        larger = b
+        smaller = a
+    while smaller > 0:
+        rem = larger % smaller 
+        larger = smaller
+        smaller = rem
+    return larger
 
-print("money:",money)
+if __name__ == "__main__":
+    res = gcd(256,240)
+    print(res)
