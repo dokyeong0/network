@@ -1,20 +1,13 @@
-numbers = [1,2,3]
-print(numbers)
-numbers[1] = 17
-print(numbers)
-numbers.extend([4,5,6])
-print(numbers)
-numbers.pop()
-print(numbers)
-numbers.pop(0)
-print(numbers)
-numbers.append(6)
-print(numbers)
-sorted(numbers)
-print(numbers)
-numbers.sort()
-print(numbers)
-numbers.sort(reverse=True)
-print(numbers)
-numbers.insert(3,25)
-print(numbers)
+from random import randint
+
+money = 50
+while money > 0 and money < 100:
+    coin = randint(1,2)
+    choice = randint(1,2)
+    if choice == coin:
+        money += 9
+    else:
+        money -= 10
+    print("money:",money)
+
+print("money:",money)
