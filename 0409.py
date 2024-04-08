@@ -1,4 +1,5 @@
-word = 'Buffalo'
-index = word.find('a') + 1
-print(word[:index])
-print(word[index:])
+sum = 0
+for s in '23456789':
+    sum += int(s)
+
+print(sum)
